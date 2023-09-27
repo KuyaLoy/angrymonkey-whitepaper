@@ -1,0 +1,168 @@
+@use "../utils" as u;
+
+body {
+  padding: 0 u.rem(20);
+  font-family: "Ubuntu", sans-serif;
+  color: u.$text-color;
+  padding-top: clamp(4.3125rem, 3.7744rem + 1.7218vw, 5.840625rem);
+
+  main {
+    max-width: u.rem(1150);
+    width: 100%;
+    margin: 0 auto;
+
+    h2 {
+      font-size: clamp(2rem, 1.8239rem + 0.5634vw, 2.5rem);
+      line-height: clamp(2.3125rem, 2.1144rem + 0.6338vw, 2.875rem);
+      letter-spacing: clamp(0.01rem, 0.0091rem + 0.0028vw, 0.0125rem);
+      font-weight: 700;
+      color: u.$black;
+      text-align: center;
+      margin: clamp(1.875rem, 1.2588rem + 1.9718vw, 3.625rem) 0;
+    }
+
+    .manual-container {
+      display: flex;
+      gap: u.rem(71);
+      position: relative;
+
+      .menu {
+        padding: u.rem(32);
+        height: fit-content;
+        box-shadow: u.$box-shadow;
+        max-width: u.rem(405);
+        width: 100%;
+        border-radius: u.rem(15);
+        display: none;
+
+        @include u.breakpoint-min(large) {
+          display: block;
+          &.scroll {
+            position: fixed;
+            top: 120px;
+          }
+        }
+
+        .accordion {
+          .accordion-item {
+            margin-bottom: u.rem(16);
+            .main-title {
+              display: flex;
+              //align-items: center;
+              //justify-content: center;
+              color: u.$text-color;
+
+              &.active {
+                color: u.$primary-color;
+              }
+              .accordion-title {
+                font-size: u.rem(18);
+                letter-spacing: u.rem(0.36);
+                line-height: u.rem(26);
+                text-decoration: none;
+                font-weight: 700;
+              }
+              button {
+                margin-right: u.rem(10);
+                background-color: u.$text-color;
+                height: u.rem(14);
+                width: u.rem(14);
+                margin-top: u.rem(6);
+              }
+            }
+
+            .accordion-content {
+              display: none;
+              padding-top: u.rem(10);
+              ul {
+                li {
+                  padding-left: u.rem(50);
+                  &:not(:last-child) {
+                    margin-bottom: u.rem(16);
+                  }
+                  a {
+                    color: u.$text-color;
+                    font-size: u.rem(18);
+                    letter-spacing: u.rem(0.36);
+                    line-height: u.rem(26);
+                    text-decoration: none;
+                    &.active-link {
+                      color: u.$primary-color;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .content {
+        max-width: clamp(24rem, 17.618rem + 20.4225vw, 42.125rem);
+        width: 100%;
+
+        margin-left: auto;
+
+        @include u.breakpoint-max(medium) {
+          max-width: unset;
+        }
+
+        section {
+          //margin-bottom: 20px;
+          //min-height: 100vh;
+          //border: 1px solid red;
+          scroll-margin-top: 110px;
+
+          h3 {
+            font-size: clamp(1.5rem, 1.3239rem + 0.5634vw, 2rem);
+            font-weight: 700;
+            line-height: clamp(2.125rem, 1.8169rem + 0.9859vw, 3rem);
+            letter-spacing: clamp(0.03rem, 0.0265rem + 0.0113vw, 0.04rem);
+            margin-bottom: clamp(1.25rem, 1.162rem + 0.2817vw, 1.5rem);
+          }
+          h4 {
+            font-size: clamp(1.125rem, 0.993rem + 0.4225vw, 1.5rem);
+            line-height: clamp(1.3125rem, 1.1585rem + 0.493vw, 1.75rem);
+            margin-bottom: clamp(1.25rem, 1.162rem + 0.2817vw, 1.5rem);
+            letter-spacing: clamp(0.0225rem, 0.0199rem + 0.0085vw, 0.03rem);
+          }
+          p {
+            font-size: clamp(0.875rem, 0.787rem + 0.2817vw, 1.125rem);
+            line-height: clamp(1.5rem, 1.456rem + 0.1408vw, 1.625rem);
+            letter-spacing: clamp(0.006875rem, 0.0014rem + 0.0176vw, 0.0225rem);
+            margin-bottom: clamp(1.25rem, 1.162rem + 0.2817vw, 1.5rem);
+            span {
+              font-weight: 700;
+            }
+            &.italic {
+              font-style: italic;
+            }
+          }
+          ol {
+            list-style-type: decimal;
+            margin-left: 30px;
+            margin-bottom: clamp(1.25rem, 1.162rem + 0.2817vw, 1.5rem);
+
+            li {
+              font-size: clamp(0.875rem, 0.787rem + 0.2817vw, 1.125rem);
+              line-height: clamp(1.5rem, 1.456rem + 0.1408vw, 1.625rem);
+              letter-spacing: clamp(
+                0.006875rem,
+                0.0014rem + 0.0176vw,
+                0.0225rem
+              );
+              span {
+                font-weight: 700;
+              }
+              &.italic {
+                font-style: italic;
+              }
+            }
+          }
+          img {
+            margin-bottom: clamp(1.25rem, 1.162rem + 0.2817vw, 1.5rem);
+          }
+        }
+      }
+    }
+  }
+}

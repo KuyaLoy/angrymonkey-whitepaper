@@ -1,0 +1,84 @@
+@use "../utils" as u;
+
+header {
+  max-width: u.rem(1640);
+  width: calc(100% - 40px);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+  margin: 0 auto;
+  border-bottom: 1px solid u.$primary-color;
+  padding: clamp(1.0625rem, 0.8644rem + 0.6338vw, 1.625rem) 0;
+  background-color: u.$white;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: u.rem(1364);
+    width: 100%;
+    margin: 0 auto;
+
+    div.logo-wrapper {
+      width: clamp(11.0625rem, 9.6336rem + 4.5725vw, 15.120625rem);
+      a {
+        display: block;
+        width: fit-content;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    div.extra-wrapper {
+      .web {
+        a {
+          display: flex;
+          align-items: center;
+
+          font-size: u.rem(20);
+          font-weight: 500;
+          letter-spacing: u.rem(0.2);
+          line-height: u.rem(24);
+          text-decoration: none;
+          color: u.$text-color;
+
+          span {
+            display: block;
+            width: u.rem(24);
+            height: u.rem(24);
+            background-color: u.$text-color;
+            margin-right: u.rem(17);
+          }
+        }
+
+        @include u.breakpoint-max(medium) {
+          display: none;
+        }
+      }
+      .mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: u.rem(24);
+
+        @include u.breakpoint-min(large) {
+          display: none;
+        }
+
+        button,
+        a {
+          display: block;
+          background-color: u.$text-color;
+          height: u.rem(34);
+          width: u.rem(34);
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+}

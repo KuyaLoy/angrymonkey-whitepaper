@@ -1,0 +1,6 @@
+@use "../utils" as u;
+
+:root {
+  --background-color: u.$primary-color;
+  --text-color: u.$white;
+}

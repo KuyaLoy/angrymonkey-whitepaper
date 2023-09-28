@@ -10,6 +10,7 @@ $(window).scroll(function () {
   }
 });
 
+// web
 $(document).ready(function () {
   // Toggle accordion content
   $(".main-title").click(function () {
@@ -22,10 +23,10 @@ $(document).ready(function () {
     }
   });
 
-  function setActiveLink(scrollTop) {
+  function setActiveLink(scrollTop, offset) {
     $("section").each(function () {
       const sectionId = $(this).attr("id");
-      const sectionTop = $(this).offset().top;
+      const sectionTop = $(this).offset().top - offset; // Subtract the offset
       const sectionHeight = $(this).outerHeight();
 
       if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
@@ -41,11 +42,45 @@ $(document).ready(function () {
   }
 
   // Initial check for active links on page load
-  setActiveLink($(window).scrollTop());
+  const offset = 150; // Adjust the offset value as needed
+  setActiveLink($(window).scrollTop(), offset);
 
   // Scroll event listener for the window
   $(window).scroll(function () {
     const scrollTop = $(window).scrollTop();
-    setActiveLink(scrollTop);
+    setActiveLink(scrollTop, offset);
+  });
+});
+
+$(document).ready(function () {
+  // Function to remove the "active" class
+  function removeActiveClass() {
+    $(".menu-slide-wrapper").removeClass("active");
+    $(".close-menu").removeClass("active");
+    $("body").removeClass("overflow-hidden");
+  }
+
+  // Initial setup to remove the "active" class on page load
+  removeActiveClass();
+
+  // Click event to toggle the "active" class
+  $(".open-menu, .close-menu").click(function () {
+    $(".menu-slide-wrapper").toggleClass("active");
+    $(".close-menu").toggleClass("active");
+    $("body").toggleClass("overflow-hidden");
+  });
+
+  // Event listener for window resize
+  $(window).resize(function () {
+    // Check if the screen width is greater than a certain breakpoint (e.g., 768px)
+    if ($(window).width() > 768) {
+      // If the screen width is greater than the breakpoint, remove the "active" class
+      removeActiveClass();
+    }
+  });
+
+  // Toggle accordion content
+  $(".menu-slide-wrapper .accordion-content a").click(function () {
+    removeActiveClass();
   });
 });

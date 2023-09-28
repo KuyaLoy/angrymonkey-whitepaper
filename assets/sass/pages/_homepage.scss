@@ -1,12 +1,13 @@
 @use "../utils" as u;
 
 body {
-  padding: 0 u.rem(20);
   font-family: "Ubuntu", sans-serif;
   color: u.$text-color;
   padding-top: clamp(4.3125rem, 3.7744rem + 1.7218vw, 5.840625rem);
+  background-color: #f8f8f8;
 
   main {
+    padding: 0 20px;
     max-width: u.rem(1150);
     width: 100%;
     margin: 0 auto;
@@ -27,70 +28,110 @@ body {
       position: relative;
 
       .menu {
-        padding: u.rem(32);
-        height: fit-content;
-        box-shadow: u.$box-shadow;
-        max-width: u.rem(405);
-        width: 100%;
-        border-radius: u.rem(15);
         display: none;
 
         @include u.breakpoint-min(large) {
           display: block;
+
+          max-width: u.rem(405);
+          width: 100%;
           &.scroll {
             position: fixed;
             top: 120px;
           }
-        }
+          .inner-menu {
+            padding: u.rem(32);
+            //height: fit-content;
+            box-shadow: u.$box-shadow;
+            border-radius: u.rem(15);
+            margin-bottom: u.rem(50);
 
-        .accordion {
-          .accordion-item {
-            margin-bottom: u.rem(16);
-            .main-title {
-              display: flex;
-              //align-items: center;
-              //justify-content: center;
-              color: u.$text-color;
+            background-color: #f8f8f8;
 
-              &.active {
-                color: u.$primary-color;
-              }
-              .accordion-title {
-                font-size: u.rem(18);
-                letter-spacing: u.rem(0.36);
-                line-height: u.rem(26);
-                text-decoration: none;
-                font-weight: 700;
-              }
-              button {
-                margin-right: u.rem(10);
-                background-color: u.$text-color;
-                height: u.rem(14);
-                width: u.rem(14);
-                margin-top: u.rem(6);
-              }
-            }
+            .accordion {
+              .accordion-item {
+                margin-bottom: u.rem(16);
+                .main-title {
+                  display: flex;
+                  //align-items: center;
+                  //justify-content: center;
+                  color: u.$text-color;
+                  cursor: pointer;
 
-            .accordion-content {
-              display: none;
-              padding-top: u.rem(10);
-              ul {
-                li {
-                  padding-left: u.rem(50);
-                  &:not(:last-child) {
-                    margin-bottom: u.rem(16);
+                  &.active {
+                    color: u.$primary-color;
+                    button {
+                      background-image: url("../images/icon-arrow-up-active.svg");
+                      transform: rotate(180deg);
+                    }
                   }
-                  a {
-                    color: u.$text-color;
+                  .accordion-title {
                     font-size: u.rem(18);
                     letter-spacing: u.rem(0.36);
                     line-height: u.rem(26);
                     text-decoration: none;
-                    &.active-link {
-                      color: u.$primary-color;
+                    font-weight: 700;
+                  }
+                  button {
+                    margin-right: u.rem(10);
+                    //background-color: u.$text-color;
+                    height: u.rem(14);
+                    width: u.rem(14);
+                    margin-top: u.rem(6);
+                    border: none;
+                    transition: all ease 0.5s;
+                    cursor: pointer;
+
+                    background-image: url("../images/icon-arrow-up.svg");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-color: transparent;
+                  }
+                }
+
+                .accordion-content {
+                  display: none;
+                  padding-top: u.rem(10);
+                  ul {
+                    li {
+                      padding-left: u.rem(50);
+                      &:not(:last-child) {
+                        margin-bottom: u.rem(16);
+                      }
+                      a {
+                        color: u.$text-color;
+                        font-size: u.rem(18);
+                        letter-spacing: u.rem(0.36);
+                        line-height: u.rem(26);
+                        text-decoration: none;
+                        &.active-link {
+                          color: u.$primary-color;
+                        }
+                      }
                     }
                   }
                 }
+              }
+            }
+          }
+          .support-wrapper {
+            padding: u.rem(20);
+            border-radius: u.rem(15);
+            border: 1px solid u.$primary-color;
+
+            h4 {
+              font-weight: 700;
+              margin-bottom: u.rem(25);
+            }
+            h4,
+            p {
+              font-size: u.rem(18);
+              letter-spacing: u.rem(0.36);
+              line-height: u.rem(28);
+
+              a {
+                color: #046ffb;
               }
             }
           }
@@ -111,6 +152,11 @@ body {
           //min-height: 100vh;
           //border: 1px solid red;
           scroll-margin-top: 110px;
+
+          a {
+            text-decoration: none;
+            color: u.$text-color;
+          }
 
           h3 {
             font-size: clamp(1.5rem, 1.3239rem + 0.5634vw, 2rem);
@@ -139,8 +185,12 @@ body {
           }
           ol {
             list-style-type: decimal;
-            margin-left: 30px;
+            margin-left: u.rem(55);
             margin-bottom: clamp(1.25rem, 1.162rem + 0.2817vw, 1.5rem);
+
+            @include u.breakpoint-max(medium) {
+              margin-left: u.rem(25);
+            }
 
             li {
               font-size: clamp(0.875rem, 0.787rem + 0.2817vw, 1.125rem);
@@ -160,6 +210,10 @@ body {
           }
           img {
             margin-bottom: clamp(1.25rem, 1.162rem + 0.2817vw, 1.5rem);
+            background-color: #e6e6e6;
+            border-radius: u.rem(15);
+            min-height: clamp(12.6875rem, 1.2031rem + 36.75vw, 21.875rem);
+            width: 100%;
           }
         }
       }

@@ -1,1 +1,58 @@
 @use "../utils" as u;
+
+footer {
+  background-color: #f8f8f8;
+  z-index: 1;
+  position: relative;
+  padding: 0 20px;
+  //background-color: red;
+  text-align: center;
+  .footer-wrapper {
+    padding: u.rem(48) 0;
+    border-top: 1px solid u.$primary-color;
+    max-width: u.rem(1640);
+    width: 100%;
+    margin: 0 auto;
+    margin-top: u.rem(100);
+
+    .logo {
+      margin-bottom: u.rem(15);
+      display: block;
+    }
+    .social-media {
+      margin-bottom: u.rem(24);
+
+      a {
+        display: inline-block;
+        height: clamp(2.25rem, 0.6875rem + 5vw, 3.5rem);
+        width: clamp(2.25rem, 0.6875rem + 5vw, 3.5rem);
+        background-color: #fffefe;
+        border-radius: 100%;
+        overflow: hidden;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 clamp(0.3125rem, 0.0781rem + 0.75vw, 0.5rem);
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+    p {
+      font-size: clamp(0.75rem, 0.5938rem + 0.5vw, 0.875rem);
+      a {
+        color: #1f1f26;
+        text-decoration: none;
+      }
+
+      &:last-child {
+        opacity: 0.76;
+      }
+    }
+    p:not(:last-child) {
+      margin-bottom: u.rem(15);
+    }
+  }
+}
